@@ -5,13 +5,13 @@
 class Scan4log4shell < Formula
   desc "Scanner to detect vulnerable log4j versions on your file-system or to send specially crafted requests and catch callbacks of systems that are impacted by log4j log4shell vulnerability"
   homepage "https://github.com/hupe1980/scan4log4shell"
-  version "0.11.3"
+  version "0.11.4"
   license "MIT"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/hupe1980/scan4log4shell/releases/download/v0.11.3/scan4log4shell_Darwin_x86_64.tar.gz"
-      sha256 "5d322c0187ec793dd90fe400ad2e3ca71f6e0e7b9052a93d4110a9be7248556a"
+    if Hardware::CPU.arm?
+      url "https://github.com/hupe1980/scan4log4shell/releases/download/v0.11.4/scan4log4shell_Darwin_arm64.tar.gz"
+      sha256 "7c952fb2a344316fc502427817876177abb788bbbf59c94e96d4a74b111b436e"
 
       def install
         bin.install "scan4log4shell"
@@ -20,9 +20,9 @@ class Scan4log4shell < Formula
         fish_completion.install "completions/scan4log4shell.fish"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/hupe1980/scan4log4shell/releases/download/v0.11.3/scan4log4shell_Darwin_arm64.tar.gz"
-      sha256 "5b717c73deaee69c5ac6fee9962e9be40696391e59cd799d1a34f18dd86101d4"
+    if Hardware::CPU.intel?
+      url "https://github.com/hupe1980/scan4log4shell/releases/download/v0.11.4/scan4log4shell_Darwin_x86_64.tar.gz"
+      sha256 "416ddb19a967a0450c1aae5df541ccc7493a1a1be8558303b1d57e81c2fe0a32"
 
       def install
         bin.install "scan4log4shell"
@@ -35,19 +35,8 @@ class Scan4log4shell < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/hupe1980/scan4log4shell/releases/download/v0.11.3/scan4log4shell_Linux_arm64.tar.gz"
-      sha256 "059a2cd51c3be0ec1ec1950fe6fa4deddd0e5a43579159bd08ec987580efb70c"
-
-      def install
-        bin.install "scan4log4shell"
-        bash_completion.install "completions/scan4log4shell.bash" => "scan4log4shell"
-        zsh_completion.install "completions/scan4log4shell.zsh" => "_scan4log4shell"
-        fish_completion.install "completions/scan4log4shell.fish"
-      end
-    end
-    if Hardware::CPU.intel?
-      url "https://github.com/hupe1980/scan4log4shell/releases/download/v0.11.3/scan4log4shell_Linux_x86_64.tar.gz"
-      sha256 "14406217d8f07eee3cb79527e3c208dcda286cdc399d7c0013fb62ca8e2b9a61"
+      url "https://github.com/hupe1980/scan4log4shell/releases/download/v0.11.4/scan4log4shell_Linux_arm64.tar.gz"
+      sha256 "f7ee1c5ca0ebc8d29c845bf8610c4af7905402337294524cd4f7dd1b4cb877eb"
 
       def install
         bin.install "scan4log4shell"
@@ -57,8 +46,19 @@ class Scan4log4shell < Formula
       end
     end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/hupe1980/scan4log4shell/releases/download/v0.11.3/scan4log4shell_Linux_armv6.tar.gz"
-      sha256 "21862cf58e8c3cca289118c0c1d35caef8c52696a7ec05965b354a03fc4e8539"
+      url "https://github.com/hupe1980/scan4log4shell/releases/download/v0.11.4/scan4log4shell_Linux_armv6.tar.gz"
+      sha256 "06898aa7d742945e454862c83b6695917ddc2e0fa4c809038e24e74679b2887c"
+
+      def install
+        bin.install "scan4log4shell"
+        bash_completion.install "completions/scan4log4shell.bash" => "scan4log4shell"
+        zsh_completion.install "completions/scan4log4shell.zsh" => "_scan4log4shell"
+        fish_completion.install "completions/scan4log4shell.fish"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/hupe1980/scan4log4shell/releases/download/v0.11.4/scan4log4shell_Linux_x86_64.tar.gz"
+      sha256 "02af06f4b09ae578714f351c85e42258e5f6ac29e475ef7244dd830c9a91b3f9"
 
       def install
         bin.install "scan4log4shell"
